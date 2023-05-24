@@ -486,7 +486,7 @@ function ga4(name, eventName) {
               params: {
                 "engagement_time_msec": "100",
                 "session_id": session_id,
-                "language": chrome.i18n.getUILanguage(),
+                "language": "en-",
                 "user_id": user_id,
                 "link_id": name,
              },
