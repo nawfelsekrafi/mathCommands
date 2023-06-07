@@ -237,7 +237,7 @@ function MouseDownEvent(e) {
         default:
             mathFieldArray[mathFieldFocus].cmd(datachar);
     }
-    saveLatex();
+    //saveLatex();
     mathFieldArray[mathFieldFocus].focus();
     trackEvent(datachar,'keyboard_click');
 };
@@ -262,12 +262,12 @@ document.body.addEventListener('keyup', function (e) {
     }
   }
 
-  saveLatex();
+  //saveLatex();
 });
 
 // Save the latex of the mathFields when the window is closed
 window.onblur = function(){
-  saveLatex();
+  //saveLatex();
 }
 
 // Store the latex from the field math into chorme vaiables, so when user close and open the extention, they will see the same forumula,
@@ -608,7 +608,7 @@ function clickHistoryDialog(e){
     clear();
     let latexArrayID = keyElement.getAttribute("latex");
     loadLatexToOutputArea(latexHistory[latexArrayID]);
-    saveLatex();
+    //saveLatex();
     trackEvent('Edit History', 'use_history');
     closeHistoryDialog();
     mathFieldArray[mathFieldFocus].focus();
