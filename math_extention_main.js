@@ -11,7 +11,7 @@ document.getElementById("closeWelcomeDialog").addEventListener("click", closeWel
 document.getElementById("copy_latex").addEventListener("click", toLatex);
 
 // history
-document.getElementById("history").addEventListener("click", openHistoryDialog);
+// document.getElementById("history").addEventListener("click", openHistoryDialog);
 document.getElementById("closeHistoryDialog").addEventListener("click", closeHistoryDialog);
 document.getElementById("latexHistoryHTML").addEventListener("click", clickHistoryDialog);
 
@@ -315,12 +315,9 @@ function loadLatexToOutputArea(latexString) {
 window.onload = (event) => {
   //chrome.storage.sync.set({dont_show_welcome: false});
   initialMQ();
-
-
-
   trackEvent('Main Window', 'open_extention');
   console.log('page is fully loaded');
-
+  window.postMessage({ type: 'FROM_PAGE', text: 'Hello from the webpage!' }, '*');
   i18n();
 
 }; //end of onload function\
@@ -355,19 +352,19 @@ function closeWelcomeDialog(){
   welcome_dialog.close();
 }
 
-document.querySelector('#go-to-options').addEventListener('click', function() {
-  if (chrome.runtime.openOptionsPage) {
-    chrome.runtime.openOptionsPage();
-  } else {
-    window.open(chrome.runtime.getURL('options.html'));
-  }
-});
+// document.querySelector('#go-to-options').addEventListener('click', function() {
+//   if (chrome.runtime.openOptionsPage) {
+//     chrome.runtime.openOptionsPage();
+//   } else {
+//     window.open(chrome.runtime.getURL('options.html'));
+//   }
+// });
 
 
 // Initatlize the MathQuill editable field
 function initialMQ() {
     var MQ = MathQuill.getInterface(2); // for backcompat
-    console.log(MQ);
+  
     // MQ.StaticMath(problemSpan);
 
     mathFieldArray[mathFieldFocus] = MQ.MathField(mathFieldSpan, {
@@ -389,23 +386,23 @@ function initialMQ() {
 // **************************************************************************
 
 function ga4(name, eventName) {
-
-        fetch(`https://www.google-analytics.com/mp/collect?measurement_id=G-BXWWE6WN4H&api_secret=w-ns_TQPQCGsuuclyyZPog`, {
-          method: "POST",
-          body: JSON.stringify({
-            client_id: user_id,
-            events: [{
-              name: eventName,
-              params: {
-                "engagement_time_msec": "100",
-                "session_id": session_id,
-                "language": "en-",
-                "user_id": user_id,
-                "link_id": name,
-             },
-            }]
-          })
-        });
+// disabled google analytics :D
+        // fetch(`https://www.google-analytics.com/mp/collect?measurement_id=G-BXWWE6WN4H&api_secret=w-ns_TQPQCGsuuclyyZPog`, {
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     client_id: user_id,
+        //     events: [{
+        //       name: eventName,
+        //       params: {
+        //         "engagement_time_msec": "100",
+        //         "session_id": session_id,
+        //         "language": "en-",
+        //         "user_id": user_id,
+        //         "link_id": name,
+        //      },
+        //     }]
+        //   })
+        // });
       }
 
 function trackEvent(name, eventName) {
@@ -419,8 +416,8 @@ function i18n(){
   var elements = document.querySelectorAll("[data-i18n]");
   elements.forEach((element)=>{
       var searchString = element.getAttribute("data-i18n");
-      var message = chrome.i18n.getMessage(searchString);
-      element.innerHTML = message;
+      // var message = chrome.i18n.getMessage(searchString);
+      // element.innerHTML = message;
   });
 
 } // end of i18n
@@ -430,7 +427,7 @@ function toLatex(){
   var latex = ReturnLatex();
   navigator.clipboard.writeText(latex);
   trackEvent('Copy Latex', 'copy_latex');
-  console.log(latex);
+  
 
 } // end of toLatex
 
@@ -465,7 +462,7 @@ function saveToHistory(){
 
   //save the entire history to chrome storage
   let savedString = JSON.stringify(latexHistory);
-  chrome.storage.sync.set({ "save_history" : savedString});
+  // chrome.storage.sync.set({ "save_history" : savedString});
 }
 
 // open history dialog
