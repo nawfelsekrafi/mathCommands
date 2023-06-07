@@ -323,6 +323,10 @@ window.onload = (event) => {
     // IMPORTANT: check the origin of the data!
         console.log(event.data);
         softyEditor = event;
+        event.source.postMessage(
+          "hi there yourself!  the secret response " + "is: rheeeeet!",
+          event.origin
+        );
 });
 
 
