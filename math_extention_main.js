@@ -430,6 +430,7 @@ function toLatex(){
   var latex = ReturnLatex();
   navigator.clipboard.writeText(latex);
   trackEvent('Copy Latex', 'copy_latex');
+  console.log(latex);
 
 } // end of toLatex
 
