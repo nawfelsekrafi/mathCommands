@@ -312,6 +312,7 @@ function loadLatexToOutputArea(latexString) {
 // This fucntion happen every time a user open the extention
 //
 // **************************************************************************
+var softyEditor = null;
 window.onload = (event) => {
   //chrome.storage.sync.set({dont_show_welcome: false});
   initialMQ();
@@ -321,7 +322,9 @@ window.onload = (event) => {
   window.addEventListener('message', event => {
     // IMPORTANT: check the origin of the data!
         console.log(event.data);
+        softyEditor = event;
 });
+
 
   i18n();
 
@@ -433,7 +436,10 @@ function toLatex(){
   navigator.clipboard.writeText(latex);
   trackEvent('Copy Latex', 'copy_latex');
   
-
+  softyEditor.source.postMessage(
+    latex + "hi I am from the extension",
+    softyEditor.origin
+  );
 } // end of toLatex
 
 
