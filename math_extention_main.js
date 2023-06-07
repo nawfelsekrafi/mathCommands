@@ -327,6 +327,7 @@ window.onload = (event) => {
           "hi there yourself!  the secret response " + "is: rheeeeet!",
           event.origin
         );
+        console.log(event.origin);
 });
 
 
