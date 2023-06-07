@@ -317,7 +317,12 @@ window.onload = (event) => {
   initialMQ();
   trackEvent('Main Window', 'open_extention');
   console.log('page is fully loaded');
-  window.postMessage({ type: 'FROM_PAGE', text: 'Hello from the webpage!' }, '*');
+
+  window.addEventListener('message', event => {
+    // IMPORTANT: check the origin of the data!
+        console.log(event.data);
+});
+
   i18n();
 
 }; //end of onload function\
