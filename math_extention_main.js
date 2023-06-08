@@ -437,7 +437,7 @@ function toLatex(){
   trackEvent('Copy Latex', 'copy_latex');
   if(softyEditor){
     softyEditor.source.postMessage(
-      latex + "hi I am from the extension",
+      latex,
       softyEditor.origin
     );
   }else {
