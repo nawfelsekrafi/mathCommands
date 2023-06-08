@@ -306,6 +306,28 @@ function loadLatexToOutputArea(latexString) {
 
 }
 
+function latexEscape(str) {
+  // Replace a \ with $\backslash$
+  // This is made more complicated because the dollars will be escaped
+  // by the subsequent replacement. Easiest to add \backslash
+  // now and then add the dollars
+  // Must be done after escape of \ since this command adds latex escapes
+  // Replace characters that can be escaped
+  // Replace ^ characters with \^{} so that $^F works okay
+  // Replace tilde (~) with \texttt{\~{}} # Replace tilde (~) with \texttt{\~{}}
+  var list = ["\\", "^", "~", "&", "%", "$", "#", "_", "{", "}"];
+  var change_to = ["\\\\", "\\^{}", "\\texttt{\\~{}}", "\\&", "\\%", "\\$", "\\#", "\\_", "\\{", "\\}"];
+
+  for (var i = 0; i < list.length; i++) {
+    if (str.includes(list[i])) {
+      str = str.replace(new RegExp(list[i], 'g'), change_to[i]);
+      break;
+    }
+  }
+  
+  return str;
+}
+
 
 // **************************************************************************
 //
@@ -318,11 +340,18 @@ window.onload = (event) => {
   initialMQ();
   trackEvent('Main Window', 'open_extention');
   console.log('page is fully loaded');
+  var originalString = "b\ =\ \frac{\infty}{^2c}\sqrt{b^2-4ac}";
 
+  mathFieldArray[mathFieldFocus].latex(String.raw`b\ =\ \frac{\infty}{^2c}\sqrt{b^2-4ac}`);  // Assign specific value
+  mathFieldArray[mathFieldFocus].focus();
+  
   window.addEventListener('message', event => {
     // IMPORTANT: check the origin of the data!
         console.log(event.data);
         softyEditor = event;
+        mathFieldArray[mathFieldFocus].latex(String.raw`${softyEditor.data}`);  // Assign specific value
+        mathFieldArray[mathFieldFocus].focus();
+
 });
 
 
@@ -435,6 +464,7 @@ function toLatex(){
   var latex = ReturnLatex();
   navigator.clipboard.writeText(latex);
   trackEvent('Copy Latex', 'copy_latex');
+  console.log(mathFieldArray);
   if(softyEditor){
     softyEditor.source.postMessage(
       latex,
