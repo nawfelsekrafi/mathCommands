@@ -323,11 +323,6 @@ window.onload = (event) => {
     // IMPORTANT: check the origin of the data!
         console.log(event.data);
         softyEditor = event;
-        event.source.postMessage(
-          "hi there yourself!  the secret response " + "is: rheeeeet!",
-          event.origin
-        );
-        console.log(event.origin);
 });
 
 
@@ -440,11 +435,15 @@ function toLatex(){
   var latex = ReturnLatex();
   navigator.clipboard.writeText(latex);
   trackEvent('Copy Latex', 'copy_latex');
-  
-  softyEditor.source.postMessage(
-    latex + "hi I am from the extension",
-    softyEditor.origin
-  );
+  if(softyEditor){
+    softyEditor.source.postMessage(
+      latex + "hi I am from the extension",
+      softyEditor.origin
+    );
+  }else {
+    console.log("softyEditor is null");
+  }
+ 
 } // end of toLatex
 
 
