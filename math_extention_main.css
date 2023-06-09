@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 .contatiner{
   display: grid;
   grid-template-rows: 1.5fr 1fr 0.5fr 0.5fr;
@@ -9,9 +10,10 @@
           "help_area";
   padding: 10px;
   width: 500px;
-  height: 250px;
+  height: 270px;
   margin: auto;
   background-color: rgba(248,249,250, 1);
+  border-radius: 8px 8px 0px 0px ;
 }
 
 .br {
@@ -33,7 +35,7 @@
 }
 
 .material-symbols-outlined{
-  color: #3C7871;
+  color: white;
   font-variation-settings:
     'FILL' 0,
     'wght' 400,
@@ -42,8 +44,9 @@
 }
 
 h4{
-  font-family:var(--bs-font-sans-serif);
-  font-size:1.25rem;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 20px !important;
+  margin: 15px 0 !important;
 
 }
 .output_area{
@@ -55,7 +58,7 @@ h4{
 }
 
 .dialog{
-  font-family:var(--bs-font-sans-serif);
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   border: none;
   background-color: rgba(255,255,255,0.95);
@@ -83,6 +86,7 @@ h4{
 
 .hr{
   border: 2px solid rgb(228,229,230);
+  display: none;
 }
 
 .footer_area{
@@ -90,10 +94,13 @@ h4{
   width: 500px;
   height: 80px;
   margin:auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .help_area{
-  background-color: rgba(248,249,250, 1);
+  /* background-color: rgba(248,249,250, 1); */
   width: 500px;
   margin:auto;
   grid_area: help_area;
@@ -104,6 +111,7 @@ h4{
           "left_help ight_help";
   font-size: 14px;
   margin: auto;
+  display: none;
 }
 
 .help_area_left {
@@ -122,15 +130,17 @@ h4{
   margin-top: 20px;
   margin-bottom: 10px;
   outline: none;
-  border-radius: 4px;
   border: none;
-  background: linear-gradient(#589983, #3C7871);
+  background: white;
   cursor: pointer;
-  color: white;
-  font-family:var(--bs-font-sans-serif);
+  color: #344054;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   cursor: pointer;
   -webkit-user-select: none;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 8px;
 
 }
 
@@ -161,7 +171,7 @@ button.current {
 }
 
 p {
-   font-family:var(--bs-font-sans-serif);
+   font-family: 'Poppins', sans-serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -182,7 +192,7 @@ p {
     grid-template-areas:
           "left_pad_area mid_pad_area right_pad_area";
     text-align: center;
-    font-family: 'Arima Madurai', cursive;
+    font-family: 'Poppins', sans-serif;
     margin: auto;
     color: #022e16;
 }
@@ -230,7 +240,7 @@ h2{
     display:block;
     margin: 2.8px;
     /* background: rgba(101, 137, 111, 0.6); */
-    background: linear-gradient(#589983, #3C7871);
+    background: white;
   }
 #go-to-options:hover{
   cursor: pointer;
@@ -238,24 +248,25 @@ h2{
 .key--letter:hover {
     background: rgba(255,255,255,.6);
     cursor:pointer;
-    color: #3C7871;
-    border: 1px solid rgba(60,120,113,0.2);
+    color: #344054;
+    font-weight: 300;
+    /* border: 1px solid rgba(60,120,113,0.2); */
 }
 
 .button:hover{
-  /* background: rgba(255,255,255,.6);
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  background: #F9FAFB;
   cursor:pointer;
-  color: #9daab9; */
-  background: rgba(255,255,255,.6);
-  cursor:pointer;
-  color: #3C7871;
-  border: 1px solid rgba(60,120,113,0.2);
+}
+.button:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
 }
 .key--letter:active {
-    background: rgba(255,255,255,.8);
-}
-.button:active{
-    background: rgba(255,255,255,.8);
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
 }
 
 .feedbackLink{
@@ -325,21 +336,29 @@ h2{
     line-height: 27px;
     width: 42px;
     height: 35px;
-    color: white;
+    color: #344054;
     font-size: 14px;
+    font-weight: 300;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
 }
 .key--letter--large {
     line-height: 27px;
     width: 42px;
     height: 35px;
-    color: white;
+    color: #344054;
     font-size: 17px;
+    font-weight: 300;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
 }
 .key--letter--large:hover {
     background: rgba(255,255,255,.6);
     cursor:pointer;
-    color: #3C7871;
-    border: 1px solid rgba(60,120,113,0.2);
+    color: white;
+    /* border: 1px solid rgba(60,120,113,0.2); */
 }
 .key--letter--large:active {
     background: rgba(255,255,255,.8);
@@ -348,13 +367,16 @@ h2{
     line-height: 27px;
     width: 42px;
     height: 35px;
-    color: white;
-    font-size: 12px;
+    color: #344054;
+    font-size: 11px;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    font-weight: 300;
 }
 .key--letter--small:hover {
-    background: rgba(255,255,255,.6);
+  background: #F9FAFB;
     cursor:pointer;
-    color: #3C7871;
     border: 1px solid rgba(60,120,113,0.2);
 }
 .key--letter--small:active {
@@ -364,13 +386,16 @@ h2{
     line-height: 27px;
     width: 42px;
     height: 35px;
-    color: white;
-    font-size: 21px;
+    font-weight: 300;
+    color: #344054;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
 }
 .key--letter--very--large:hover {
-    background: rgba(255,255,255,.6);
+  background: #F9FAFB;
     cursor:pointer;
-    color: #3C7871;
+    color: #344054;
     border: 1px solid rgba(60,120,113,0.2);
 }
 .key--letter--very--large:active {

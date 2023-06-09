@@ -3,7 +3,7 @@
 let formulaButton = document.getElementById("formulaButton");
 document.getElementById("closeReviewDialog").addEventListener("click", closeReviewDialog);
 document.getElementById("toIMG").addEventListener("click", toPNG2);
-document.getElementById("clear").addEventListener("click", clear);
+// document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("keyboard").addEventListener("click", MouseDownEvent);
 document.getElementById("closeWelcomeDialog").addEventListener("click", closeWelcomeDialog);
 
